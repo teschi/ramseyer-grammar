@@ -1,0 +1,83 @@
+'scopeName': 'RP-Phase2-Parser'
+'name': 'Grammer for RP-Phase2 parser output'
+'injectionSelector': 'rp.phase2.parser, comment'
+'fileTypes': [
+  'txt'
+]
+
+'patterns': [
+  {'include': '#text'}
+]
+
+'repository':
+  'text':
+    'patterns': [
+      {
+        # Die 6 Belegfelder 
+        # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
+        'match': '^\\s*(\\|B\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
+#        'name': 'rp.phase2.parser.belege-marker4'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.format-marker'
+          '2':
+            'name': 'rp.phase2.parser.belege-marker1'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker2'
+          '4':
+            'name': 'rp.phase2.parser.belege-marker3'
+          '5':
+            'name': 'rp.phase2.parser.belege-marker4'
+          '6':
+            'name': 'rp.phase2.parser.belege-marker5'
+          '7':
+            'name': 'rp.phase2.parser.belege-marker6'
+      }
+      
+      
+      {
+        # der Belegfelfverlängerer "~|" und die Zeichen danach
+        # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
+        'match': '(?<=~\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
+#        'name': 'rp.phase2.parser.belege-marker4'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.belege-marker4'
+          '2':
+            'name': 'rp.phase2.parser.belege-marker5'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker6'
+   
+      } 
+      
+      
+      {
+        # Kenntlichmachung dass es sich um mehrere Urbare handelt
+        'match': '~'
+        'name': 'rp.phase2.parser.belege-extensionChar'
+      }
+      
+      
+      {
+        # Die 2 referenzfelder
+        # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
+        'match': '^\\s*(\\|r\\|)\\s*([^|#]+?)\\s*\\|\\s*([^|#]+?)\\s*(?=[#]|$)'
+#        'name': 'rp.phase2.parser.belege-marker4'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.format-marker'
+          '2':
+            'name': 'rp.phase2.parser.referenz-marker1'
+          '3':
+            'name': 'rp.phase2.parser.referenz-marker2'
+      }
+    
+    
+      {
+        # lastErr marker
+        'match': '\\{\s*lasterr:[^}]*}'
+        'name': 'rp.phase2.parser.lasterr-marker'   
+      } 
+      
+              
+    ]
