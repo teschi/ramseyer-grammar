@@ -75,9 +75,14 @@
     
       {
         # lastErr marker
-        'match': '\\{\s*lasterr:[^}]*}'
+        'match': '\\{\\s*lasterr:[^}]*}'
         'name': 'rp.phase2.parser.lasterr-marker'   
       } 
       
+      {
+        # lastErr marker
+        'match': '###.*$'
+        'name': 'rp.phase2.parser.original-line-marker'   
+      } 
               
     ]
