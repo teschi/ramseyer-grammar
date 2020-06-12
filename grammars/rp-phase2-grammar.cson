@@ -84,9 +84,15 @@
       } 
       
       {
-        # lastErr marker
+        # Original-text Zeile (###) ausgrauen 
         'match': '###.*$'
         'name': 'rp.phase2.parser.original-line-marker'   
       } 
+              
+      {
+        # TODO marker 
+        'match': '^\\s*TODO:\\s*(.+)'
+        'name': 'rp.phase2.parser.todo-marker'
+      }               
               
     ]
