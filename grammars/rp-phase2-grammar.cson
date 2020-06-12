@@ -15,38 +15,42 @@
       {
         # Die 6 Belegfelder 
         # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
-        'match': '^\\s*(\\|B\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
-#        'name': 'rp.phase2.parser.belege-marker4'
+        'match': '^\\s*(\\|B\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*(?:(xxxx)|([^|~#]+?))\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
+#        'name': 'rp.phase2.parser.lasterr-marker'
         'captures': 
           '1':
             'name': 'rp.phase2.parser.format-marker'
           '2':
-            'name': 'rp.phase2.parser.belege-marker1'
+            'name': 'rp.phase2.parser.belege-marker-lemma'
           '3':
-            'name': 'rp.phase2.parser.belege-marker2'
+            'name': 'rp.phase2.parser.belege-marker-beleg'
           '4':
-            'name': 'rp.phase2.parser.belege-marker3'
+            'name': 'rp.phase2.parser.belege-marker-ort'
           '5':
-            'name': 'rp.phase2.parser.belege-marker4'
+            'name': 'rp.phase2.parser.belege-marker-keindatum'
           '6':
-            'name': 'rp.phase2.parser.belege-marker5'
+            'name': 'rp.phase2.parser.belege-marker-datum'
           '7':
-            'name': 'rp.phase2.parser.belege-marker6'
+            'name': 'rp.phase2.parser.belege-marker-urbar'
+          '8':
+            'name': 'rp.phase2.parser.belege-marker-seiten'
       }
       
       
       {
         # der Belegfelfverlängerer "~|" und die Zeichen danach
         # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
-        'match': '(?<=~\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
-#        'name': 'rp.phase2.parser.belege-marker4'
+        'match': '(?<=~\\|)\\s*(?:(xxxx)|([^|~#]+?))\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
+#        'name': 'rp.phase2.parser.lasterr-marker'
         'captures': 
           '1':
-            'name': 'rp.phase2.parser.belege-marker4'
+            'name': 'rp.phase2.parser.belege-marker-keindatum'
           '2':
-            'name': 'rp.phase2.parser.belege-marker5'
+            'name': 'rp.phase2.parser.belege-marker-datum'
           '3':
-            'name': 'rp.phase2.parser.belege-marker6'
+            'name': 'rp.phase2.parser.belege-marker-urbar'
+          '4':
+            'name': 'rp.phase2.parser.belege-marker-seiten'
    
       } 
       
@@ -62,7 +66,7 @@
         # Die 2 referenzfelder
         # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
         'match': '^\\s*(\\|r\\|)\\s*([^|#]+?)\\s*\\|\\s*([^|#]+?)\\s*(?=[#]|$)'
-#        'name': 'rp.phase2.parser.belege-marker4'
+#        'name': 'rp.phase2.parser.lasterr-marker'
         'captures': 
           '1':
             'name': 'rp.phase2.parser.format-marker'
