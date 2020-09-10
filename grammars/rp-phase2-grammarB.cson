@@ -1,0 +1,96 @@
+'scopeName': 'RP-Phase2-Parser-B'
+'name': 'Grammer for RP-Phase2 parser output type B (with Ort not being separated)'
+'injectionSelector': 'rp.phase2.parser, comment'
+'fileTypes': [
+  'rp2b'
+]
+
+'patterns': [
+  {'include': '#text'}
+]
+
+'repository':
+  'text':
+    'patterns': [
+      {
+        # Die Belegfelder 
+        # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
+        'match': '^\\s*(\\|B\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*(?:(xxxx)|([^|~#]+?))\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
+#        'name': 'rp.phase2.parser.lasterr-marker'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.format-marker'
+          '2':
+            'name': 'rp.phase2.parser.belege-marker-lemma'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker-beleg'
+          '4':
+            'name': 'rp.phase2.parser.belege-marker-keindatum'
+          '5':
+            'name': 'rp.phase2.parser.belege-marker-datum'
+          '6':
+            'name': 'rp.phase2.parser.belege-marker-urbar'
+          '7':
+            'name': 'rp.phase2.parser.belege-marker-seiten'
+      }
+      
+      
+      {
+        # der Belegfelfverlängerer "~|" und die Zeichen danach
+        # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
+        'match': '(?<=~\\|)\\s*(?:(xxxx)|([^|~#]+?))\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
+#        'name': 'rp.phase2.parser.lasterr-marker'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.belege-marker-keindatum'
+          '2':
+            'name': 'rp.phase2.parser.belege-marker-datum'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker-urbar'
+          '4':
+            'name': 'rp.phase2.parser.belege-marker-seiten'
+   
+      } 
+      
+      
+      {
+        # Kenntlichmachung dass es sich um mehrere Urbare handelt
+        'match': '~'
+        'name': 'rp.phase2.parser.belege-extensionChar'
+      }
+      
+      
+      {
+        # Die 2 referenzfelder
+        # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
+        'match': '^\\s*(\\|r\\|)\\s*([^|#]+?)\\s*\\|\\s*([^|#]+?)\\s*(?=[#]|$)'
+#        'name': 'rp.phase2.parser.lasterr-marker'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.format-marker'
+          '2':
+            'name': 'rp.phase2.parser.referenz-marker1'
+          '3':
+            'name': 'rp.phase2.parser.referenz-marker2'
+      }
+    
+    
+      {
+        # lastErr marker
+        'match': '\\{\\s*lasterr:[^}]*}'
+        'name': 'rp.phase2.parser.lasterr-marker'   
+      } 
+      
+      {
+        # Original-text Zeile (###) ausgrauen 
+        'match': '###.*$'
+        'name': 'rp.phase2.parser.original-line-marker'   
+      } 
+              
+      {
+        # TODO marker 
+        'match': '^\\s*TODO:\\s*(.+)'
+        'name': 'rp.phase2.parser.todo-marker'
+      }               
+              
+    ]

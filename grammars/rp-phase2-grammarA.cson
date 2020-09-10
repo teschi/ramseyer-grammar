@@ -1,8 +1,8 @@
-'scopeName': 'RP-Phase2-Parser'
-'name': 'Grammer for RP-Phase2 parser output'
+'scopeName': 'RP-Phase2-Parser-A'
+'name': 'Grammer for RP-Phase2 parser output type A (with Ort being separated)'
 'injectionSelector': 'rp.phase2.parser, comment'
 'fileTypes': [
-  'txt'
+  'rp2a'
 ]
 
 'patterns': [
@@ -13,7 +13,7 @@
   'text':
     'patterns': [
       {
-        # Die 6 Belegfelder 
+        # Die Belegfelder 
         # end-marker sind lookahead, so dass diese Zeichen nicht teil dieses patterns werden und separat nochmal gematcht werden könnten
         'match': '^\\s*(\\|B\\|)\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*(?:(xxxx)|([^|~#]+?))\\s*\\|\\s*([^|~#]+?)\\s*\\|\\s*([^|~#]+?)\\s*(?=[#~]|$)'
 #        'name': 'rp.phase2.parser.lasterr-marker'
