@@ -1,5 +1,5 @@
 'scopeName': 'RP-Phase2-Parser-B'
-'name': 'Grammer for RP-Phase2 parser output type B (with Ort not being separated)'
+'name': 'Format: RP-Phase2 type-B (Ort NOT separated)'
 'injectionSelector': 'rp.phase2.parser, comment'
 'fileTypes': [
   'rp2b'
