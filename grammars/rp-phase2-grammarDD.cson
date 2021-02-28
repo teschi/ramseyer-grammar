@@ -1,0 +1,57 @@
+'scopeName': 'RP-Phase2-Parser-DD'
+'name': 'Format: RP-Phase2 Dedupl'
+'injectionSelector': 'rp.phase2.parser, comment'
+'fileTypes': [
+  'rp2dd'
+]
+
+'patterns': [
+  {'include': '#text'}
+]
+
+'repository':
+  'text':
+    'patterns': [
+
+      {
+        # 10 or more duplicates 
+        'match': '^\\s*(\\|.[^ ].\\|)\\s*(.*?)\\s*(\\[\'.*)'
+        'name': 'rp.phase2.parser.dupls-many'
+        'captures': 
+#          '1':
+#            'name': 'rp.phase2.parser.format-marker'
+#          '2':
+#            'name': 'rp.phase2.parser.belege-marker-lemma'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker-beleg'
+      }
+      
+      {
+        # 1 duplicate 
+        'match': '^\\s*(\\|  1\\|)\\s*(.*?)\\s*(\\[\'.*)'
+        'name': 'rp.phase2.parser.dupls-one'
+        'captures': 
+#          '1':
+#            'name': 'rp.phase2.parser.format-marker'
+#          '2':
+#            'name': 'rp.phase2.parser.belege-marker-lemma'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker-beleg'
+      }
+      
+      {
+        # 2-9 duplicates
+        'match': '^\\s*(\\|  [2-9]\\|)\\s*(.*?)\\s*(\\[\'.*)'
+        'name': 'rp.phase2.parser.dupls-several'
+        'captures': 
+#          '1':
+#            'name': 'rp.phase2.parser.format-marker'
+#          '2':
+#            'name': 'rp.phase2.parser.belege-marker-lemma'
+          '3':
+            'name': 'rp.phase2.parser.belege-marker-beleg'
+      }
+    
+      
+              
+    ]
