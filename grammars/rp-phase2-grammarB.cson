@@ -82,11 +82,20 @@
       } 
       
       {
-        # Original-text Zeile (###) ausgrauen 
+        # Original-text Line (###) -> very light grey 
         'match': '###.*$'
         'name': 'rp.phase2.parser.original-line-marker'   
       } 
-              
+
+
+      {
+        # Kommentar-Marker (#) einfaerben 
+        'match': '(?<=\\s)(#[^#{]*?)\\s*(?=###|$)'
+        'captures': 
+          '1':
+            'name': 'rp.phase2.parser.kommentar-marker'
+      } 
+
       {
         # TODO marker 
         'match': '^\\s*TODO:\\s*(.+)'
